@@ -1,21 +1,21 @@
 import React from "react";
-import { Item, List, SLink } from "./style";
-
+import { HeaderContainer, Item, List } from "./style";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <Header>
+    <HeaderContainer>
       <List>
         <Item>
-          <SLink to="/">Movie</SLink>
+          <Link to="/">Movie</Link>
         </Item>
         <Item>
-          <SLink to="/tv">TV</SLink>
+          <Link to="/tv">TV</Link>
         </Item>
         <Item>
-          <SLink to="/search">Search</SLink>
+          <Link to="/search">Search</Link>
         </Item>
       </List>
-    </Header>
+    </HeaderContainer>
   );
 };
 

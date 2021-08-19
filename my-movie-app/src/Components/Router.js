@@ -8,7 +8,7 @@ import {
 import Home from "./Routes/Home";
 import Search from "./Routes/Search";
 import TV from "./Routes/TV";
-import Header from "Components/Header";
+import Header from "Components/Header/index";
 
 const RouterComponent = () => (
   <Router>
