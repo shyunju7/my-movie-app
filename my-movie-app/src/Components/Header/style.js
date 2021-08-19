@@ -30,8 +30,6 @@ export const Item = styled.li`
 
   transition: 0.5s ease-in-out;
 
-  margin: 0 auto;
-
   &:hover {
     font-size: 18px;
   }
