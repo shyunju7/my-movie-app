@@ -17,15 +17,23 @@ export const HeaderContainer = styled.header`
 
 export const List = styled.ul`
   display: flex;
+  text-align: center;
 `;
 
 export const Item = styled.li`
-  width: 100px;
-  &:not(last-child) {
-    margin-right: 10px;
-  }
+  width: 80px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-bottom: 5px solid
+    ${(props) => (props.current ? "#BA0F30" : "transparent")};
+
+  transition: 0.5s ease-in-out;
+
+  margin: 0 auto;
+
   &:hover {
-    font-size: 20px;
+    font-size: 18px;
   }
 `;
 
