@@ -1,7 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
+const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) =>
+  null;
 
-const Home = () => {
-  return "home!";
+HomePresenter.propType = {
+  nowPlaying: PropTypes.array,
+  popular: PropTypes.array,
+  upcoming: PropTypes.array,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
 };
 
-export default Home;
+export default HomePresenter;

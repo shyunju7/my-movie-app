@@ -1,7 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
+const DetailPresenter = ({ result, loading, error }) => null;
 
-const Detail = () => {
-  return "Detail!";
+DetailPresenter.propType = {
+  result: PropTypes.object,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
 };
 
-export default Detail;
+export default DetailPresenter;
