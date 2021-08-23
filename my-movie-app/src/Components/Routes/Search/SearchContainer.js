@@ -1,4 +1,4 @@
-import { moviesApi, tVApi } from "api";
+import { moviesApi, tvApi } from "api";
 import React from "react";
 import SearchPresenter from "./SearchPresenter";
 
@@ -31,7 +31,7 @@ export class SearchContainer extends React.Component {
       } = await moviesApi.search(searchTerm);
       const {
         data: { results: tvResults },
-      } = await tVApi.search(searchTerm);
+      } = await tvApi.search(searchTerm);
 
       this.setState({ movieResults, tvResults });
     } catch {

@@ -1,4 +1,4 @@
-import { tVApi } from "api";
+import { tvApi } from "api";
 import React from "react";
 import TVPresenter from "./TVPresenter";
 
@@ -15,13 +15,13 @@ export class TVContainer extends React.Component {
     try {
       const {
         data: { results: topRated },
-      } = await tVApi.topRated();
+      } = await tvApi.topRated();
       const {
         data: { results: popular },
-      } = await tVApi.popular();
+      } = await tvApi.popular();
       const {
         data: { results: airingToday },
-      } = await tVApi.airingToday();
+      } = await tvApi.airingToday();
 
       this.setState({ topRated, popular, airingToday });
     } catch {
