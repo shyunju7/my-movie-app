@@ -9,6 +9,7 @@ import Home from "./Routes/Home";
 import Search from "./Routes/Search";
 import TV from "./Routes/TV";
 import Header from "Components/Header";
+import Detail from "./Routes/Detail/DeatailPresenter";
 
 const RouterComponent = () => (
   <Router>
@@ -17,13 +18,8 @@ const RouterComponent = () => (
       <Route path="/" exact component={Home} />
       <Route path="/tv" exact component={TV} />
       <Route path="/search" component={Search} />
-      <Route
-        path="/tv/popular"
-        exact
-        render={() => {
-          <h2>popular TV show!</h2>;
-        }}
-      />
+      <Route path="/movie/:id" component={Detail} />
+      <Route path="/show/:id" component={Detail} />
       <Redirect from="*" to="/" />
     </Switch>
   </Router>
