@@ -1,7 +1,7 @@
 import React from "react";
-import HomePresenter from "./HomePresenter";
+import SearchPresenter from "./SearchPresenter";
 
-export default class extends React.Component {
+export class SearchContainer extends React.Component {
   state = {
     movieResults: null,
     tvResults: null,
@@ -13,7 +13,7 @@ export default class extends React.Component {
   render() {
     const { movieResults, tvResults, searchTerm, error, loading } = this.state;
     return (
-      <HomePresenter
+      <SearchPresenter
         movieResults={movieResults}
         tvResults={tvResults}
         searchTerm={searchTerm}

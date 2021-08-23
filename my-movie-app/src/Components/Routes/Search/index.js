@@ -1,7 +1,3 @@
-import React from "react";
+import { SearchContainer } from "./SearchContainer";
 
-const Search = () => {
-  return "Search!";
-};
-
-export default Search;
+export default SearchContainer;

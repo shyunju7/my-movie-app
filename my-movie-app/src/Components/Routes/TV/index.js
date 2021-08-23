@@ -1,7 +1,3 @@
-import React from "react";
+import { TVContainer } from "./TVContainer";
 
-const TV = () => {
-  return "TV!";
-};
-
-export default TV;
+export default TVContainer;
