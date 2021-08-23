@@ -28,6 +28,7 @@ export const Item = styled.li`
   border-bottom: 5px solid
     ${(props) => (props.current ? "#BA0F30" : "transparent")};
 
+  background-color: aqua;
   transition: 0.5s ease-in-out;
 
   &:hover {
