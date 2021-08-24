@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 const Container = styled.div``;
 const ImageContainer = styled.div``;
 const Image = styled.div``;
-const Rating = styled.sapn``;
-const Title = styled.sapn``;
-const Year = styled.sapn``;
+const Rating = styled.span``;
+const Title = styled.span``;
+const Year = styled.span``;
 const Poster = ({ id, imageURl, title, rating, year, isMovie = false }) => (
   <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
     <Container>
@@ -18,7 +18,7 @@ const Poster = ({ id, imageURl, title, rating, year, isMovie = false }) => (
           <span role="img" aria-label="Rating">
             ⭐️
           </span>{" "}
-          {rating / 10}
+          {rating} / 10
         </Rating>
       </ImageContainer>
       <Title>{title}</Title>
@@ -26,6 +26,8 @@ const Poster = ({ id, imageURl, title, rating, year, isMovie = false }) => (
     </Container>
   </Link>
 );
+
+export default Poster;
 
 Poster.propTypes = {
   id: PropTypes.number.isRequired,
