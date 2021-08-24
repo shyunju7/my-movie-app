@@ -25,7 +25,7 @@ export class TVContainer extends React.Component {
 
       this.setState({ topRated, popular, airingToday });
     } catch {
-      this.setState({ error: "Can't find movies information" });
+      this.setState({ error: "Can't find TV Shows information" });
     } finally {
       this.setState({ loading: false });
     }

@@ -28,7 +28,6 @@ export const Item = styled.li`
   border-bottom: 5px solid
     ${(props) => (props.current ? "#BA0F30" : "transparent")};
 
-  background-color: aqua;
   transition: 0.5s ease-in-out;
 
   &:hover {
@@ -40,5 +39,5 @@ export const SLink = styled(Link)`
   height: 50px;
   display: flex;
   align-items: center;
-  justify-contents: center;
+  justify-content: center;
 `;

@@ -11,8 +11,17 @@ export class SearchContainer extends React.Component {
     loading: false, // 사용자가 단어를 가지고 기다려야 -> true
   };
 
+  updateSearchTerm = (event) => {
+    const {
+      target: { value },
+    } = event;
+
+    this.setState({ searchTerm: value });
+  };
+
   //handleSubmit - input으로 값을 입력받고 검색되어야만 작동
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     const { searchTerm } = this.state;
     if (searchTerm !== "") {
       this.searchByTerm();
@@ -51,6 +60,7 @@ export class SearchContainer extends React.Component {
         error={error}
         loading={loading}
         handleSubmit={this.handleSubmit}
+        updateSearchTerm={this.updateSearchTerm}
       />
     );
   }
