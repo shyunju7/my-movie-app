@@ -11,7 +11,7 @@ export class DetailContainer extends React.Component {
     this.state = {
       result: null,
       error: null,
-      loading: false, // 사용자가 단어를 가지고 기다려야 -> true
+      loading: true,
       isMovie: pathname.includes("/movie/"),
     };
   }
@@ -24,12 +24,11 @@ export class DetailContainer extends React.Component {
       history: { push },
     } = this.props;
     const { isMovie } = this.state;
-    const parsedId = Number(id);
+    const parsedId = parseInt(id);
     if (isNaN(parsedId)) {
       return push("/");
     }
-
-    let result;
+    let result = null;
     try {
       if (isMovie) {
         ({ data: result } = await moviesApi.movieDetail(parsedId));
