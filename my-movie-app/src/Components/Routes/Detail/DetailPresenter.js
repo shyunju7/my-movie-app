@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Loader from "Components/Loader";
 import Message from "Components/Message";
 import NoImage from "assets/defaultImage.png";
+import { Helmet } from "react-helmet";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -66,52 +67,64 @@ const BASE_URL = "https://image.tmdb.org/t/p/original";
 
 const DetailPresenter = ({ result, loading, error }) =>
   loading ? (
-    <Loader />
+    <>
+      <Helmet>
+        <title>Loading | songflix</title>
+      </Helmet>
+      <Loader />
+    </>
   ) : (
-    <Container>
-      {console.log(result)}
-      <Backdrop url={`${BASE_URL}${result?.backdrop_path}`} />
-      <Content>
-        <Cover
-          url={
-            result.poster_path
-              ? `${BASE_URL}${result.poster_path}`
-              : `${NoImage}`
-          }
-        />
-        <Data>
-          <Title>
-            {result.original_title
-              ? result.original_title
-              : result.original_name}
-          </Title>
-          <ItemContainer>
-            <Item>
-              {result.release_date
-                ? result.release_date.substring(0, 4)
-                : result.first_air_date.substring(0, 4)}
-            </Item>
-            <Divider> ⎮ </Divider>
-            <Item>
-              {result.runtime ? result.runtime : result.episode_run_time} min
-            </Item>
-            <Divider> ⎮ </Divider>
-            <Item>
-              {result.genres &&
-                result.genres.map((genre, index) =>
-                  index === result.genres.length - 1
-                    ? genre.name
-                    : `${genre.name} • `
-                )}
-            </Item>
-            <Divider> ⎮ </Divider>
-            {result.vote_average && result.vote_average}
-          </ItemContainer>
-          <Overview>{result.overview}</Overview>
-        </Data>
-      </Content>
-      {error && <Message text={error} color="#e74c3c" />}
-    </Container>
+    <>
+      <Helmet>
+        <title>
+          {result.original_title ? result.original_title : result.original_name}{" "}
+          | songflix
+        </title>
+      </Helmet>
+      <Container>
+        <Backdrop url={`${BASE_URL}${result?.backdrop_path}`} />
+        <Content>
+          <Cover
+            url={
+              result.poster_path
+                ? `${BASE_URL}${result.poster_path}`
+                : `${NoImage}`
+            }
+          />
+          <Data>
+            <Title>
+              {result.original_title
+                ? result.original_title
+                : result.original_name}
+            </Title>
+            <ItemContainer>
+              <Item>
+                {result.release_date
+                  ? result.release_date.substring(0, 4)
+                  : result.first_air_date.substring(0, 4)}
+              </Item>
+              <Divider> ⎮ </Divider>
+              <Item>
+                {result.runtime ? result.runtime : result.episode_run_time} min
+              </Item>
+              <Divider> ⎮ </Divider>
+              <Item>
+                {result.genres &&
+                  result.genres.map((genre, index) =>
+                    index === result.genres.length - 1
+                      ? genre.name
+                      : `${genre.name} • `
+                  )}
+              </Item>
+              <Divider> ⎮ </Divider>
+              {result.vote_average && result.vote_average}
+            </ItemContainer>
+            <Overview>{result.overview}</Overview>
+          </Data>
+        </Content>
+        {error && <Message text={error} color="#e74c3c" />}
+      </Container>
+    </>
   );
 
 DetailPresenter.propType = {
