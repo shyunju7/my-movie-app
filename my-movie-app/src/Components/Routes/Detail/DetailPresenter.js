@@ -5,6 +5,7 @@ import Loader from "Components/Loader";
 import Message from "Components/Message";
 import NoImage from "assets/defaultImage.png";
 import { Helmet } from "react-helmet";
+import ReactPlayer from "react-player";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -21,8 +22,8 @@ const Content = styled.div`
 `;
 
 const Cover = styled.div`
-  width: 30%;
-  height: 100%;
+  width: 15%;
+  height: 50%;
   background-image: url(${(props) => props.url});
   background-position: center center;
   background-size: cover;
@@ -117,9 +118,17 @@ const DetailPresenter = ({ result, loading, error }) =>
                   )}
               </Item>
               <Divider> ⎮ </Divider>
+              <span role="img" aria-label="Rating">
+                ⭐️{" "}
+              </span>
               {result.vote_average && result.vote_average}
             </ItemContainer>
             <Overview>{result.overview}</Overview>
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
+              width="50%"
+              height="50%"
+            />
           </Data>
         </Content>
         {error && <Message text={error} color="#e74c3c" />}
