@@ -6,6 +6,7 @@ import Message from "Components/Message";
 import NoImage from "assets/defaultImage.png";
 import { Helmet } from "react-helmet";
 import ReactPlayer from "react-player";
+import ActorProfile from "Components/ActorProfile";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -22,8 +23,8 @@ const Content = styled.div`
 `;
 
 const Cover = styled.div`
-  width: 15%;
-  height: 50%;
+  width: 80%;
+  height: 100%;
   background-image: url(${(props) => props.url});
   background-position: center center;
   background-size: cover;
@@ -46,7 +47,7 @@ const Backdrop = styled.div`
 
 const Data = styled.div`
   width: 70%;
-  margin-left: 10px;
+  margin-left: 15px;
 `;
 // span은 margin을 가지지 않음
 const Title = styled.h3`
@@ -55,18 +56,33 @@ const Title = styled.h3`
 `;
 
 const ItemContainer = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 const Item = styled.span``;
 const Divider = styled.span``;
 const Overview = styled.p`
+  margin-bottom: 25px;
   line-height: 1.5;
   width: 90%;
 `;
 
+const CastContainer = styled.div`
+  display: flex !important;
+  width: 90%;
+  flex-direction: row;
+  overflow: scroll;
+`;
+
+const SubTitle = styled.h3`
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
+`;
+
 const BASE_URL = "https://image.tmdb.org/t/p/original";
 
-const DetailPresenter = ({ result, loading, error }) =>
+const DetailPresenter = ({ result, castingActors, loading, error }) =>
   loading ? (
     <>
       <Helmet>
@@ -123,14 +139,45 @@ const DetailPresenter = ({ result, loading, error }) =>
               </span>
               {result.vote_average && result.vote_average}
             </ItemContainer>
+            <SubTitle>{result.tagline ? result.tagline : ""}</SubTitle>
             <Overview>{result.overview}</Overview>
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
-              width="50%"
-              height="50%"
-            />
+            <SubTitle>
+              <span role="img" aria-label="Rating">
+                🎃{" "}
+              </span>
+              Casting Actors
+            </SubTitle>
+            <CastContainer>
+              {castingActors &&
+                castingActors.length > 0 &&
+                castingActors.map((actor) => (
+                  <ActorProfile
+                    key={actor.credit_id}
+                    id={actor.credit_id}
+                    original_name={actor.original_name}
+                    character={actor.character}
+                    profile_path={actor.profile_path}
+                  />
+                ))}
+            </CastContainer>
+            <SubTitle>
+              <span role="img" aria-label="Rating">
+                🎬{" "}
+              </span>
+              videos
+            </SubTitle>
+            {result.videos && result.videos.results.length > 0 ? (
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
+                width="50%"
+                height="50%"
+              />
+            ) : (
+              <div>Sorry, I can't find video!</div>
+            )}
           </Data>
         </Content>
+
         {error && <Message text={error} color="#e74c3c" />}
       </Container>
     </>
@@ -138,6 +185,7 @@ const DetailPresenter = ({ result, loading, error }) =>
 
 DetailPresenter.propType = {
   result: PropTypes.object,
+  castingActors: PropTypes.array,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
 };

@@ -42,4 +42,5 @@ export const moviesApi = {
         query: encodeURIComponent(term),
       },
     }),
+  getCastingActors: (id) => api.get(`movie/${id}/credits`),
 };
