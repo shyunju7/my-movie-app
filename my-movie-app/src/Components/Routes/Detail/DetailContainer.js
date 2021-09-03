@@ -64,13 +64,15 @@ export class DetailContainer extends React.Component {
   }
 
   render() {
-    const { result, castingActors, similar, error, loading } = this.state;
+    const { result, castingActors, similar, isMovie, error, loading } =
+      this.state;
     return (
       <DetailPresenter
         key={this.props.match.params.id}
         result={result}
         castingActors={castingActors}
         similar={similar}
+        isMovie={isMovie}
         error={error}
         loading={loading}
       />

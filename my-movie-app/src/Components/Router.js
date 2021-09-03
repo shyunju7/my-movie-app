@@ -24,7 +24,11 @@ const RouterComponent = () => (
         exact
         render={(props) => <Detail key={props.match.params.id} {...props} />}
       />
-      <Route path="/show/:id" exact component={Detail} />
+      <Route
+        path="/show/:id"
+        exact
+        render={(props) => <Detail key={props.match.params.id} {...props} />}
+      />
       <Route path="/movie/:id/reviews" component={Review} />
       <Route path="/show/:id/reviews" component={Review} />
       <Redirect from="*" to="/" />

@@ -106,7 +106,14 @@ const TagLine = styled.h3`
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
 
-const DetailPresenter = ({ result, castingActors, similar, loading, error }) =>
+const DetailPresenter = ({
+  result,
+  castingActors,
+  similar,
+  isMovie,
+  loading,
+  error,
+}) =>
   loading ? (
     <>
       <Helmet>
@@ -227,6 +234,7 @@ const DetailPresenter = ({ result, castingActors, similar, loading, error }) =>
                     : movie.original_name
                 }
                 posterPath={movie.poster_path}
+                isMovie={isMovie}
               />
             ))}
         </SimpleSlider>
