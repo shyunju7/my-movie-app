@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const MovieImage = styled.div`
   margin: 12px;
-  width: 138px;
-  height: 75%;
+  width: 160px;
+  height: 220px;
   border-radius: 12px;
   margin-bottom: 4px;
   background-image: url(${(props) => props.url});
@@ -21,6 +21,7 @@ const MovieImage = styled.div`
 `;
 
 const Title = styled.h3`
+  margin-left: 10px;
   font-size: 16px;
   z-index: 100;
   opacity: 0.6;
@@ -30,7 +31,11 @@ const BASE_URL = "https://image.tmdb.org/t/p/original";
 const SimilarMovies = ({ id, originalTitle, posterPath }) => (
   <Link to={`/movie/${id}`}>
     <MovieImage url={posterPath ? `${BASE_URL}${posterPath}` : NoImage} />
-    <Title>{originalTitle}</Title>
+    <Title>
+      {originalTitle && originalTitle.length < 18
+        ? originalTitle
+        : originalTitle.substring(0, 18) + "..."}
+    </Title>
   </Link>
 );
 

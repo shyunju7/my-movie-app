@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 import ReactPlayer from "react-player";
 import ActorProfile from "Components/ActorProfile";
 import SimilarMovies from "Components/SimilarMovie";
-import Poster from "Components/Poster";
+import SimpleSlider from "Components/SimpleSlider";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -102,21 +102,6 @@ const TagLine = styled.h3`
   font-size: 22px;
   font-family: "Glory-ExtraLight";
   font-style: italic;
-`;
-
-const SimilarMovieList = styled.div`
-  display: flex;
-  overflow: scroll;
-  background: linear-gradient(
-    rgba(20, 20, 20, 0) 10%,
-    rgba(20, 20, 20, 0.25) 25%,
-    rgba(20, 20, 20, 0.5) 50%,
-    rgba(20, 20, 20, 0.75) 80%,
-    rgba(20, 20, 20, 1) 100%
-  );
-  opacity: 0.8;
-  width: 100%;
-  height: 40%;
 `;
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
@@ -230,7 +215,7 @@ const DetailPresenter = ({
           </span>
           similar Movies!
         </SubTitle>
-        <SimilarMovieList>
+        <SimpleSlider>
           {similarMovies &&
             similarMovies.length > 5 &&
             similarMovies.map((movie) => (
@@ -240,8 +225,7 @@ const DetailPresenter = ({
                 posterPath={movie.poster_path}
               />
             ))}
-        </SimilarMovieList>
-
+        </SimpleSlider>
         {error && <Message text={error} color="#e74c3c" />}
       </Container>
     </>
