@@ -4,7 +4,16 @@ import PropTypes from "prop-types";
 import NoImage from "../assets/defaultImage.png";
 import { Link } from "react-router-dom";
 
+const Rating = styled.div`
+  position: absolute;
+  bottom: 30px;
+  opacity: 0;
+  z-index: 10;
+  font-size: 12px;
+`;
+
 const MovieImage = styled.div`
+  position: relative;
   margin: 12px;
   width: 160px;
   height: 220px;
@@ -28,7 +37,7 @@ const Title = styled.h3`
 `;
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
-const SimilarMovies = ({ id, originalTitle, posterPath }) => (
+const SimilarMovies = ({ id, originalTitle, posterPath, rating }) => (
   <Link to={`/movie/${id}`}>
     <MovieImage url={posterPath ? `${BASE_URL}${posterPath}` : NoImage} />
     <Title>
@@ -36,6 +45,12 @@ const SimilarMovies = ({ id, originalTitle, posterPath }) => (
         ? originalTitle
         : originalTitle.substring(0, 18) + "..."}
     </Title>
+    <Rating>
+      <span role="img" aria-label="Rating">
+        ⭐️
+      </span>
+      {rating}
+    </Rating>
   </Link>
 );
 
@@ -43,5 +58,6 @@ SimilarMovies.propTypes = {
   id: PropTypes.number,
   originalTitle: PropTypes.string,
   posterPath: PropTypes.string,
+  rating: PropTypes.number,
 };
 export default SimilarMovies;

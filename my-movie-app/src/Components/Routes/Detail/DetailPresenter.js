@@ -26,8 +26,8 @@ const Content = styled.div`
 `;
 
 const Cover = styled.div`
-  width: 80%;
-  height: 100%;
+  width: 100%;
+  height: 90%;
   background-image: url(${(props) => props.url});
   background-position: center center;
   background-size: cover;
@@ -50,7 +50,6 @@ const Backdrop = styled.div`
 
 const Data = styled.div`
   width: 70%;
-  margin-left: 15px;
 `;
 // span은 margin을 가지지 않음
 const Title = styled.h3`
@@ -186,30 +185,30 @@ const DetailPresenter = ({
                   <ActorProfile
                     key={actor.credit_id}
                     id={actor.credit_id}
-                    original_name={actor.original_name}
+                    originalName={actor.original_name}
                     character={actor.character}
-                    profile_path={actor.profile_path}
+                    profilePath={actor.profile_path}
                   />
                 ))}
             </CastContainer>
-            <SubTitle>
+            {/* <SubTitle>
               <span role="img" aria-label="Rating">
                 🎬{" "}
               </span>
               videos
             </SubTitle>
-            {/* {result.videos && result.videos.results.length > 0 ? (
+            {result.videos && result.videos.results.length > 0 ? (
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
-                width="50%"
-                height="50%"
+                width="30%"
+                height="30%"
               />
             ) : (
               <div>Sorry, I can't find video!</div>
             )} */}
           </Data>
         </Content>
-        <SubTitle>
+        <SubTitle style={{ marginLeft: "50px" }}>
           <span role="img" aria-label="SimilarMovie">
             🏆{" "}
           </span>
@@ -220,7 +219,9 @@ const DetailPresenter = ({
             similarMovies.length > 5 &&
             similarMovies.map((movie) => (
               <SimilarMovies
+                key={movie.id}
                 id={movie.id}
+                rating={movie.vote_average}
                 originalTitle={movie.original_title}
                 posterPath={movie.poster_path}
               />

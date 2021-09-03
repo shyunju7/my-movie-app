@@ -50,12 +50,18 @@ const CharacterName = styled.div`
 `;
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
-const ActorProfile = ({ profile_path, character, original_name }) => (
+const ActorProfile = ({ profilePath, character, originalName }) => (
   <Container>
-    <ProfileImage url={profile_path ? `${BASE_URL}${profile_path}` : NoImage} />
-    <OriginalName>{original_name}</OriginalName>
+    <ProfileImage url={profilePath ? `${BASE_URL}${profilePath}` : NoImage} />
+    <OriginalName>{originalName}</OriginalName>
     <CharacterName>{character}</CharacterName>
   </Container>
 );
+
+ActorProfile.prototypes = {
+  profilePath: PropTypes.string,
+  character: PropTypes.string,
+  originalName: PropTypes.string,
+};
 
 export default ActorProfile;

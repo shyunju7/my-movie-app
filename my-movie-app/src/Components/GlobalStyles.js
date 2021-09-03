@@ -15,17 +15,17 @@ const GlobalStyles = createGlobalStyle`
 
     @font-face {
         font-family: "Glory-Bold";
-        src: url("./font/Glory-Bold");
+        src: url("./font/Glory-Bold.ttf");
     }
 
     @font-face {
         font-family: "Glory-ExtraLight";
-        src: url("./font/Glory-ExtraLight");
+        src: url("./font/Glory-ExtraLight.ttf") format('woff');
     }
 
     @font-face {
         font-family: "Glory-Regular";
-        src: url("./font/Glory-Regular");
+        src: url("./font/Glory-Regular.ttf") format('woff');
     }
 
     body {
