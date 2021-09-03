@@ -5,6 +5,7 @@ import { moviesApi, tvApi } from "api";
 export class DetailContainer extends React.Component {
   constructor(props) {
     super(props);
+
     const {
       location: { pathname },
     } = props;
@@ -19,6 +20,7 @@ export class DetailContainer extends React.Component {
   }
 
   async componentDidMount() {
+    window.scrollTo(0, 0);
     const {
       match: {
         params: { id },
