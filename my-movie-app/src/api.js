@@ -56,4 +56,10 @@ export const moviesApi = {
         page: 1,
       },
     }),
+  getMovieReviews: (id) =>
+    api.get(`/movie/${id}/reviews`, {
+      params: {
+        page: 1,
+      },
+    }),
 };

@@ -9,6 +9,7 @@ import ReactPlayer from "react-player";
 import ActorProfile from "Components/ActorProfile";
 import SimilarContents from "Components/SimilarContents";
 import SimpleSlider from "Components/SimpleSlider";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -161,6 +162,10 @@ const DetailPresenter = ({ result, castingActors, similar, loading, error }) =>
                 ⭐️{" "}
               </span>
               <Item>{result.vote_average && result.vote_average}</Item>
+              <Divider> ⎮ </Divider>
+              <Link to={`/movie/${result.id}/reviews`}>
+                <Item>more reviews..</Item>
+              </Link>
             </ItemContainer>
             <TagLine>
               {result.tagline ? '"' + result.tagline + '"' : ""}

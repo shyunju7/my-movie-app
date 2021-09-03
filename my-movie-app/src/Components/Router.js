@@ -10,6 +10,7 @@ import Search from "./Routes/Search";
 import TV from "./Routes/TV";
 import Header from "Components/Header";
 import Detail from "./Routes/Detail";
+import Review from "./Routes/Review";
 
 const RouterComponent = () => (
   <Router>
@@ -20,9 +21,12 @@ const RouterComponent = () => (
       <Route path="/search" component={Search} />
       <Route
         path="/movie/:id"
+        exact
         render={(props) => <Detail key={props.match.params.id} {...props} />}
       />
-      <Route path="/show/:id" component={Detail} />
+      <Route path="/show/:id" exact component={Detail} />
+      <Route path="/movie/:id/reviews" component={Review} />
+      <Route path="/show/:id/reviews" component={Review} />
       <Redirect from="*" to="/" />
     </Switch>
   </Router>
