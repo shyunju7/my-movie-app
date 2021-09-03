@@ -13,6 +13,21 @@ const GlobalStyles = createGlobalStyle`
         box-sizing : border-box;
     }
 
+    @font-face {
+        font-family: "Glory-Bold";
+        src: url("./font/Glory-Bold");
+    }
+
+    @font-face {
+        font-family: "Glory-ExtraLight";
+        src: url("./font/Glory-ExtraLight");
+    }
+
+    @font-face {
+        font-family: "Glory-Regular";
+        src: url("./font/Glory-Regular");
+    }
+
     body {
         font-family : apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell , 'Helvetica Neue', sans-serif;
         font-size : 14px;

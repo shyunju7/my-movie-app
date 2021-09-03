@@ -56,6 +56,7 @@ const Title = styled.h3`
   font-style: bold;
   font-weight: 600;
   margin-bottom: 10px;
+  font-family: "Glory-Bold";
 `;
 
 const ItemContainer = styled.div`
@@ -86,6 +87,14 @@ const SubTitle = styled.h3`
   margin-bottom: 10px;
   font-size: 22px;
   font-weight: 600;
+`;
+
+const TagLine = styled.h3`
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-family: "Glory-ExtraLight";
+  font-style: italic;
 `;
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
@@ -147,7 +156,9 @@ const DetailPresenter = ({ result, castingActors, loading, error }) =>
               </span>
               <Item>{result.vote_average && result.vote_average}</Item>
             </ItemContainer>
-            <SubTitle>{result.tagline ? result.tagline : ""}</SubTitle>
+            <TagLine>
+              {result.tagline ? '"' + result.tagline + '"' : ""}
+            </TagLine>
             <Overview>{result.overview}</Overview>
             <SubTitle>
               <span role="img" aria-label="Rating">
