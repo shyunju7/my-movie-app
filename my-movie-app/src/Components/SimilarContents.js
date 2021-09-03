@@ -37,7 +37,7 @@ const Title = styled.h3`
 `;
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
-const SimilarMovies = ({ id, originalTitle, posterPath, rating }) => (
+const SimilarContents = ({ id, originalTitle, posterPath, rating }) => (
   <Link to={`/movie/${id}`}>
     <MovieImage url={posterPath ? `${BASE_URL}${posterPath}` : NoImage} />
     <Title>
@@ -54,10 +54,10 @@ const SimilarMovies = ({ id, originalTitle, posterPath, rating }) => (
   </Link>
 );
 
-SimilarMovies.propTypes = {
+SimilarContents.propTypes = {
   id: PropTypes.number,
   originalTitle: PropTypes.string,
   posterPath: PropTypes.string,
   rating: PropTypes.number,
 };
-export default SimilarMovies;
+export default SimilarContents;

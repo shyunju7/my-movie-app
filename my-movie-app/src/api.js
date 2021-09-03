@@ -24,6 +24,13 @@ export const tvApi = {
         query: encodeURIComponent(term),
       },
     }),
+  getCastingActors: (id) => api.get(`tv/${id}/credits`),
+  getSimilarTV: (id) =>
+    api.get(`tv/${id}/similar`, {
+      param: {
+        page: 1,
+      },
+    }),
 };
 
 export const moviesApi = {

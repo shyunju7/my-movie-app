@@ -7,7 +7,7 @@ import NoImage from "assets/defaultImage.png";
 import { Helmet } from "react-helmet";
 import ReactPlayer from "react-player";
 import ActorProfile from "Components/ActorProfile";
-import SimilarMovies from "Components/SimilarMovie";
+import SimilarContents from "Components/SimilarContents";
 import SimpleSlider from "Components/SimpleSlider";
 
 const Container = styled.div`
@@ -26,7 +26,7 @@ const Content = styled.div`
 `;
 
 const Cover = styled.div`
-  width: 100%;
+  width: 30%;
   height: 90%;
   background-image: url(${(props) => props.url});
   background-position: center center;
@@ -105,13 +105,7 @@ const TagLine = styled.h3`
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
 
-const DetailPresenter = ({
-  result,
-  castingActors,
-  similarMovies,
-  loading,
-  error,
-}) =>
+const DetailPresenter = ({ result, castingActors, similar, loading, error }) =>
   loading ? (
     <>
       <Helmet>
@@ -209,20 +203,24 @@ const DetailPresenter = ({
           </Data>
         </Content>
         <SubTitle style={{ marginLeft: "50px" }}>
-          <span role="img" aria-label="SimilarMovie">
+          <span role="img" aria-label="Similar">
             🏆{" "}
           </span>
-          similar Movies!
+          similar contents!
         </SubTitle>
         <SimpleSlider>
-          {similarMovies &&
-            similarMovies.length > 5 &&
-            similarMovies.map((movie) => (
-              <SimilarMovies
+          {similar &&
+            similar.length > 5 &&
+            similar.map((movie) => (
+              <SimilarContents
                 key={movie.id}
                 id={movie.id}
                 rating={movie.vote_average}
-                originalTitle={movie.original_title}
+                originalTitle={
+                  movie.original_title
+                    ? movie.original_title
+                    : movie.original_name
+                }
                 posterPath={movie.poster_path}
               />
             ))}

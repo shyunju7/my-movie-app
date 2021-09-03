@@ -11,7 +11,7 @@ export class DetailContainer extends React.Component {
     this.state = {
       result: null,
       castingActors: null,
-      similarMovies: null,
+      similar: null,
       error: null,
       loading: true,
       isMovie: pathname.includes("/movie/"),
@@ -33,7 +33,7 @@ export class DetailContainer extends React.Component {
     this.setState({ id: parsedId });
     let result = null;
     let castingActors = null;
-    let similarMovies = null;
+    let similar = null;
     try {
       if (isMovie) {
         ({ data: result } = await moviesApi.movieDetail(parsedId));
@@ -43,28 +43,34 @@ export class DetailContainer extends React.Component {
         } = await moviesApi.getCastingActors(parsedId));
 
         ({
-          data: { results: similarMovies },
+          data: { results: similar },
         } = await moviesApi.getSimilarMovies(parsedId));
-
-        console.log(similarMovies);
       } else {
         ({ data: result } = await tvApi.showDetail(parsedId));
+
+        ({
+          data: { cast: castingActors },
+        } = await tvApi.getCastingActors(parsedId));
+
+        ({
+          data: { results: similar },
+        } = await tvApi.getSimilarTV(parsedId));
       }
     } catch {
       this.setState({ error: "Can't find anything." });
     } finally {
-      this.setState({ loading: false, result, castingActors, similarMovies });
+      this.setState({ loading: false, result, castingActors, similar });
     }
   }
 
   render() {
-    const { result, castingActors, similarMovies, error, loading } = this.state;
+    const { result, castingActors, similar, error, loading } = this.state;
     return (
       <DetailPresenter
         key={this.props.match.params.id}
         result={result}
         castingActors={castingActors}
-        similarMovies={similarMovies}
+        similar={similar}
         error={error}
         loading={loading}
       />
