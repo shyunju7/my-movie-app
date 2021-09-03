@@ -12,6 +12,7 @@ const Container = styled.div`
   height: calc(100vh - 50px);
   width: 100%;
   position: relative;
+  transition: opacity 1s linear;
 `;
 
 const Content = styled.div`
@@ -52,17 +53,24 @@ const Data = styled.div`
 // span은 margin을 가지지 않음
 const Title = styled.h3`
   font-size: 32px;
+  font-style: bold;
+  font-weight: 600;
   margin-bottom: 10px;
 `;
 
 const ItemContainer = styled.div`
   margin-bottom: 20px;
 `;
-const Item = styled.span``;
-const Divider = styled.span``;
+const Item = styled.span`
+  opacity: 0.7;
+`;
+const Divider = styled.span`
+  opacity: 0.8;
+`;
 const Overview = styled.p`
   margin-bottom: 25px;
   line-height: 1.5;
+  opacity: 0.8;
   width: 90%;
 `;
 
@@ -137,7 +145,7 @@ const DetailPresenter = ({ result, castingActors, loading, error }) =>
               <span role="img" aria-label="Rating">
                 ⭐️{" "}
               </span>
-              {result.vote_average && result.vote_average}
+              <Item>{result.vote_average && result.vote_average}</Item>
             </ItemContainer>
             <SubTitle>{result.tagline ? result.tagline : ""}</SubTitle>
             <Overview>{result.overview}</Overview>
@@ -166,7 +174,7 @@ const DetailPresenter = ({ result, castingActors, loading, error }) =>
               </span>
               videos
             </SubTitle>
-            {result.videos && result.videos.results.length > 0 ? (
+            {/* {result.videos && result.videos.results.length > 0 ? (
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
                 width="50%"
@@ -174,7 +182,7 @@ const DetailPresenter = ({ result, castingActors, loading, error }) =>
               />
             ) : (
               <div>Sorry, I can't find video!</div>
-            )}
+            )} */}
           </Data>
         </Content>
 
