@@ -7,6 +7,8 @@ import NoImage from "assets/defaultImage.png";
 import { Helmet } from "react-helmet";
 import ReactPlayer from "react-player";
 import ActorProfile from "Components/ActorProfile";
+import SimilarMovies from "Components/SimilarMovie";
+import Poster from "Components/Poster";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -52,6 +54,7 @@ const Data = styled.div`
 `;
 // span은 margin을 가지지 않음
 const Title = styled.h3`
+  margin-left: 20px;
   font-size: 32px;
   font-style: bold;
   font-weight: 600;
@@ -61,6 +64,7 @@ const Title = styled.h3`
 
 const ItemContainer = styled.div`
   margin-bottom: 20px;
+  margin-left: 20px;
 `;
 const Item = styled.span`
   opacity: 0.7;
@@ -69,6 +73,7 @@ const Divider = styled.span`
   opacity: 0.8;
 `;
 const Overview = styled.p`
+  margin-left: 20px;
   margin-bottom: 25px;
   line-height: 1.5;
   opacity: 0.8;
@@ -84,12 +89,14 @@ const CastContainer = styled.div`
 
 const SubTitle = styled.h3`
   margin-top: 20px;
+  margin-left: 20px;
   margin-bottom: 10px;
   font-size: 22px;
   font-weight: 600;
 `;
 
 const TagLine = styled.h3`
+  margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 10px;
   font-size: 22px;
@@ -97,9 +104,30 @@ const TagLine = styled.h3`
   font-style: italic;
 `;
 
+const SimilarMovieList = styled.div`
+  display: flex;
+  overflow: scroll;
+  background: linear-gradient(
+    rgba(20, 20, 20, 0) 10%,
+    rgba(20, 20, 20, 0.25) 25%,
+    rgba(20, 20, 20, 0.5) 50%,
+    rgba(20, 20, 20, 0.75) 80%,
+    rgba(20, 20, 20, 1) 100%
+  );
+  opacity: 0.8;
+  width: 100%;
+  height: 40%;
+`;
+
 const BASE_URL = "https://image.tmdb.org/t/p/original";
 
-const DetailPresenter = ({ result, castingActors, loading, error }) =>
+const DetailPresenter = ({
+  result,
+  castingActors,
+  similarMovies,
+  loading,
+  error,
+}) =>
   loading ? (
     <>
       <Helmet>
@@ -162,7 +190,7 @@ const DetailPresenter = ({ result, castingActors, loading, error }) =>
             <Overview>{result.overview}</Overview>
             <SubTitle>
               <span role="img" aria-label="Rating">
-                🎃{" "}
+                👑{" "}
               </span>
               Casting Actors
             </SubTitle>
@@ -196,6 +224,23 @@ const DetailPresenter = ({ result, castingActors, loading, error }) =>
             )} */}
           </Data>
         </Content>
+        <SubTitle>
+          <span role="img" aria-label="SimilarMovie">
+            🏆{" "}
+          </span>
+          similar Movies!
+        </SubTitle>
+        <SimilarMovieList>
+          {similarMovies &&
+            similarMovies.length > 5 &&
+            similarMovies.map((movie) => (
+              <SimilarMovies
+                id={movie.id}
+                originalTitle={movie.original_title}
+                posterPath={movie.poster_path}
+              />
+            ))}
+        </SimilarMovieList>
 
         {error && <Message text={error} color="#e74c3c" />}
       </Container>

@@ -43,4 +43,10 @@ export const moviesApi = {
       },
     }),
   getCastingActors: (id) => api.get(`movie/${id}/credits`),
+  getSimilarMovies: (id) =>
+    api.get(`movie/${id}/similar`, {
+      param: {
+        page: 1,
+      },
+    }),
 };
