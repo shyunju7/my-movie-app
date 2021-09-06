@@ -84,7 +84,11 @@ const CastContainer = styled.div`
   display: flex !important;
   width: 90%;
   flex-direction: row;
-  overflow: scroll;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const SubTitle = styled.h3`
