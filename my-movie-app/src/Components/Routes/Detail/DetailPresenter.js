@@ -28,7 +28,7 @@ const Content = styled.div`
 
 const Cover = styled.div`
   width: 30%;
-  height: 90%;
+  height: 100%;
   background-image: url(${(props) => props.url});
   background-position: center center;
   background-size: cover;
@@ -174,7 +174,13 @@ const DetailPresenter = ({
               </span>
               <Item>{result.vote_average && result.vote_average}</Item>
               <Divider> ⎮ </Divider>
-              <Link to={`/movie/${result.id}/reviews`}>
+              <Link
+                to={
+                  isMovie
+                    ? `/movie/${result.id}/reviews`
+                    : `/show/${result.id}/reviews`
+                }
+              >
                 <Item>more reviews..</Item>
               </Link>
             </ItemContainer>

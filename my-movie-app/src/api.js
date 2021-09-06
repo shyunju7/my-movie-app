@@ -31,6 +31,12 @@ export const tvApi = {
         page: 1,
       },
     }),
+  getTVReviews: (id) =>
+    api.get(`/tv/${id}/reviews`, {
+      params: {
+        page: 1,
+      },
+    }),
 };
 
 export const moviesApi = {
