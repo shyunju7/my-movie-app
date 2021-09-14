@@ -224,11 +224,13 @@ const DetailPresenter = ({
               Keywords
             </SubTitle>
             <KeywordContainer>
-              {keywords &&
-                keywords.length > 0 &&
+              {keywords && keywords.length > 0 ? (
                 keywords.map((keyword) => (
                   <KeywordComponent key={keyword.id} text={keyword.name} />
-                ))}
+                ))
+              ) : (
+                <Item>NO KEYWORDS!</Item>
+              )}
             </KeywordContainer>
           </Data>
         </Content>
