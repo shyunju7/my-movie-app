@@ -84,6 +84,7 @@ const CastContainer = styled.div`
   display: flex !important;
   width: 90%;
   flex-direction: row;
+  margin-left: 20px;
   overflow-y: hidden;
   overflow-x: scroll;
   ::-webkit-scrollbar {
