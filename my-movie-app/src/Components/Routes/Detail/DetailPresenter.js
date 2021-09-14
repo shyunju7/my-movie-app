@@ -10,6 +10,7 @@ import ActorProfile from "Components/ActorProfile";
 import SimilarContents from "Components/SimilarContents";
 import SimpleSlider from "Components/SimpleSlider";
 import { Link } from "react-router-dom";
+import KeywordComponent from "Components/KeywordComponent";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -45,7 +46,7 @@ const Backdrop = styled.div`
   background-position: center center;
   background-size: cover;
   filter: blur(3px);
-  opacity: 0.5;
+  opacity: 0.4;
   z-index: -1;
 `;
 
@@ -56,7 +57,7 @@ const Data = styled.div`
 const Title = styled.h3`
   margin-left: 20px;
   font-size: 32px;
-  font-style: bold;
+  font-weight: bold;
   font-weight: 600;
   margin-bottom: 10px;
   font-family: "Glory-Bold";
@@ -109,12 +110,20 @@ const TagLine = styled.h3`
   font-style: italic;
 `;
 
+const KeywordContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  margin-top: 16px;
+`;
+
 const BASE_URL = "https://image.tmdb.org/t/p/original";
 
 const DetailPresenter = ({
   result,
   castingActors,
   similar,
+  keywords,
   isMovie,
   loading,
   error,
@@ -208,21 +217,19 @@ const DetailPresenter = ({
                   />
                 ))}
             </CastContainer>
-            {/* <SubTitle>
+            <SubTitle>
               <span role="img" aria-label="Rating">
-                🎬{" "}
+                💡{" "}
               </span>
-              videos
+              Keywords
             </SubTitle>
-            {result.videos && result.videos.results.length > 0 ? (
-              <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
-                width="30%"
-                height="30%"
-              />
-            ) : (
-              <div>Sorry, I can't find video!</div>
-            )} */}
+            <KeywordContainer>
+              {keywords &&
+                keywords.length > 0 &&
+                keywords.map((keyword) => (
+                  <KeywordComponent key={keyword.id} text={keyword.name} />
+                ))}
+            </KeywordContainer>
           </Data>
         </Content>
         <SubTitle style={{ marginLeft: "50px" }}>

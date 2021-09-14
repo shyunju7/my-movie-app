@@ -13,6 +13,7 @@ export class DetailContainer extends React.Component {
       result: null,
       castingActors: null,
       similar: null,
+      keywords: null,
       error: null,
       loading: true,
       isMovie: pathname.includes("/movie/"),
@@ -36,6 +37,7 @@ export class DetailContainer extends React.Component {
     let result = null;
     let castingActors = null;
     let similar = null;
+    let keywords = null;
     try {
       if (isMovie) {
         ({ data: result } = await moviesApi.movieDetail(parsedId));
@@ -47,6 +49,11 @@ export class DetailContainer extends React.Component {
         ({
           data: { results: similar },
         } = await moviesApi.getSimilarMovies(parsedId));
+
+        ({
+          data: { keywords },
+        } = await moviesApi.getMovieKeywords(parsedId));
+        console.log(keywords);
       } else {
         ({ data: result } = await tvApi.showDetail(parsedId));
 
@@ -57,23 +64,41 @@ export class DetailContainer extends React.Component {
         ({
           data: { results: similar },
         } = await tvApi.getSimilarTV(parsedId));
+
+        ({
+          data: { results: keywords },
+        } = await tvApi.getTVKeywords(parsedId));
       }
     } catch {
       this.setState({ error: "Can't find anything." });
     } finally {
-      this.setState({ loading: false, result, castingActors, similar });
+      this.setState({
+        loading: false,
+        result,
+        castingActors,
+        similar,
+        keywords,
+      });
     }
   }
 
   render() {
-    const { result, castingActors, similar, isMovie, error, loading } =
-      this.state;
+    const {
+      result,
+      castingActors,
+      similar,
+      keywords,
+      isMovie,
+      error,
+      loading,
+    } = this.state;
     return (
       <DetailPresenter
         key={this.props.match.params.id}
         result={result}
         castingActors={castingActors}
         similar={similar}
+        keywords={keywords}
         isMovie={isMovie}
         error={error}
         loading={loading}

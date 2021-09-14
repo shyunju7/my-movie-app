@@ -37,6 +37,7 @@ export const tvApi = {
         page: 1,
       },
     }),
+  getTVKeywords: (id) => api.get(`/tv/${id}/keywords`),
 };
 
 export const moviesApi = {
@@ -68,4 +69,6 @@ export const moviesApi = {
         page: 1,
       },
     }),
+
+  getMovieKeywords: (id) => api.get(`/movie/${id}/keywords`),
 };
