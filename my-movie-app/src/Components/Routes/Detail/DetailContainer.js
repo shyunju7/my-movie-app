@@ -41,6 +41,7 @@ export class DetailContainer extends React.Component {
     try {
       if (isMovie) {
         ({ data: result } = await moviesApi.movieDetail(parsedId));
+        console.log(result);
 
         ({
           data: { cast: castingActors },

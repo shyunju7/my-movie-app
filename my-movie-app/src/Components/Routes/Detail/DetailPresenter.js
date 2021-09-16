@@ -232,6 +232,16 @@ const DetailPresenter = ({
                 <Item>NO KEYWORDS!</Item>
               )}
             </KeywordContainer>
+            {/* {result.videos && result.videos.results.length > 0 ? (
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
+                width="30%"
+                height="30%"
+                playing
+              />
+            ) : (
+              <div>Sorry, I can't find video!</div>
+            )} */}
           </Data>
         </Content>
         <SubTitle style={{ marginLeft: "50px" }}>
