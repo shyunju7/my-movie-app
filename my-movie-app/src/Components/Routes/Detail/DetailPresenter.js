@@ -21,6 +21,7 @@ const Container = styled.div`
 
 const Content = styled.div`
   display: flex;
+  flex-direction: row;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -28,8 +29,8 @@ const Content = styled.div`
 `;
 
 const Cover = styled.div`
-  width: 30%;
-  height: 100%;
+  width: 100vw;
+  height: 80%;
   background-image: url(${(props) => props.url});
   background-position: center center;
   background-size: cover;
@@ -51,7 +52,7 @@ const Backdrop = styled.div`
 `;
 
 const Data = styled.div`
-  width: 70%;
+  width: ${(props) => (props.isMobile ? "100%" : "70%")};
 `;
 // span은 margin을 가지지 않음
 const Title = styled.h3`
@@ -125,6 +126,7 @@ const DetailPresenter = ({
   similar,
   keywords,
   isMovie,
+  isMobile,
   loading,
   error,
 }) =>

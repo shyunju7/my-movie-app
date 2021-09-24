@@ -3,13 +3,18 @@ import HomePresenter from "./HomePresenter";
 import { moviesApi } from "api";
 
 export class HomeContainer extends React.Component {
-  state = {
-    nowPlaying: null,
-    upcoming: null,
-    popular: null,
-    error: null,
-    loading: true,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      nowPlaying: null,
+      upcoming: null,
+      popular: null,
+      videos: null,
+      error: null,
+      loading: true,
+    };
+  }
 
   async componentDidMount() {
     // 이 함수 안에서 처리해도 되고 밖에서 처리해도 됨 - 현재 프젝에서는 크지 않기 때문에 여기서 처리할 예정
@@ -36,6 +41,7 @@ export class HomeContainer extends React.Component {
   }
 
   render() {
+    const { isMobile } = this.props;
     const { nowPlaying, upcoming, popular, error, loading } = this.state;
     return (
       <HomePresenter
@@ -44,6 +50,7 @@ export class HomeContainer extends React.Component {
         popular={popular}
         error={error}
         loading={loading}
+        isMobile={isMobile}
       />
     );
   }

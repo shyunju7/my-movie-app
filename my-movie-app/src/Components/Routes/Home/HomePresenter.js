@@ -8,7 +8,6 @@ import Poster from "Components/Poster";
 import { Helmet } from "react-helmet";
 import HomeSlider from "Components/HomeSlider";
 import NoImage from "assets/defaultImage.png";
-import ReactPlayer from "react-player";
 
 const Container = styled.div`
   padding: 20px;
@@ -16,19 +15,19 @@ const Container = styled.div`
 
 const Cover = styled.div`
   position: relative;
-  width: 100vw;
-  height: 90vh;
+  height: ${(props) => (props.isMobile ? "20vw" : "80vw")};
   align-self: center;
   background-image: url(${(props) => props.backdropPath});
   background-position: center center;
   background-size: cover;
   border-radius: 4px;
   opacity: 0.6;
+  margin-bottom: 40px;
 `;
 
 const Contents = styled.div`
   width: 100%;
-  height: 30vh;
+  height: ${(props) => (props.isMobile ? "20vw" : "20vw")};
   position: absolute;
   bottom: 0px;
   padding: 10px 20px;
@@ -36,26 +35,23 @@ const Contents = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 28px;
+  font-size: ${(props) => (props.isMobile ? "28px" : "20px")};
   font-weight: bold;
   margin-bottom: 20px;
   z-index: 1000;
 `;
 
-const Overview = styled.p`
-  width: 80%;
-  font-size: 18px;
-  opacity: 0.7;
-  margin-top: 20px;
-`;
-
-const Rating = styled.span`
-  font-size: 14px;
-`;
-
 const BASE_URL = "https://image.tmdb.org/t/p/original";
 
-const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
+const HomePresenter = ({
+  nowPlaying,
+  popular,
+  upcoming,
+  videos,
+  isMobile,
+  loading,
+  error,
+}) => (
   <>
     <Helmet>
       <title>Movies | songflix</title>
@@ -75,23 +71,15 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
                     : `${NoImage}`
                 }
               >
-                <Title>MOVIE</Title>
                 <Contents>
                   <Title>{movie.original_title}</Title>
-                  <Rating>
-                    <span aria-label="Rating" role="img">
-                      ⭐️{" "}
-                    </span>
-                    {movie.vote_average}
-                  </Rating>
-                  <Overview>{movie.overview}</Overview>
                 </Contents>
               </Cover>
             ))}
           </HomeSlider>
         )}
         {nowPlaying.length > 0 && nowPlaying && (
-          <Section title="Now Playing!">
+          <Section title="NOW PLAYING!">
             {nowPlaying.map((movie) => (
               <Poster
                 key={movie.id}
@@ -106,7 +94,7 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
           </Section>
         )}
         {upcoming.length > 0 && nowPlaying && (
-          <Section title="Upcoming Movies!">
+          <Section title="UPCOMING MOVIES!">
             {upcoming.map((movie) => (
               <Poster
                 key={movie.id}
@@ -121,7 +109,7 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
           </Section>
         )}
         {popular.length > 0 && nowPlaying && (
-          <Section title="Popular Movies!!">
+          <Section title="POPULAR MOVIES!">
             {popular.map((movie) => (
               <Poster
                 key={movie.id}

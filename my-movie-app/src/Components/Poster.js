@@ -48,7 +48,7 @@ const Poster = ({ id, imageURl, title, rating, year, isMovie = false }) => (
       <ImageContainer>
         <Image
           url={
-            imageURl ? `https://image.tmdb.org/t/p/w300/${imageURl}` : NoImage
+            imageURl ? `https://image.tmdb.org/t/p/w500/${imageURl}` : NoImage
           }
         />
         <Rating>

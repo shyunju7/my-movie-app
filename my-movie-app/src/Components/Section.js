@@ -8,14 +8,17 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.span`
-  font-size: 16px;
+const Title = styled.div`
+  font-size: 22px;
   font-weight: 600;
+  text-align: center;
+  margin-top: 20px;
 `;
 
 const Grid = styled.div`
   margin-top: 24px;
   display: grid;
+  place-content: center;
   grid-gap: 24px;
   grid-template-columns: repeat(auto-fill, 125px);
 `;

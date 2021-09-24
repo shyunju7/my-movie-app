@@ -84,6 +84,7 @@ export class DetailContainer extends React.Component {
   }
 
   render() {
+    const { isMobile } = this.props;
     const {
       result,
       castingActors,
@@ -101,6 +102,7 @@ export class DetailContainer extends React.Component {
         similar={similar}
         keywords={keywords}
         isMovie={isMovie}
+        isMobile={isMobile}
         error={error}
         loading={loading}
       />
