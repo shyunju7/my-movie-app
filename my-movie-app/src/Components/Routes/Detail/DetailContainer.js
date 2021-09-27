@@ -54,7 +54,6 @@ export class DetailContainer extends React.Component {
         ({
           data: { keywords },
         } = await moviesApi.getMovieKeywords(parsedId));
-        console.log(keywords);
       } else {
         ({ data: result } = await tvApi.showDetail(parsedId));
 

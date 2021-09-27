@@ -20,7 +20,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  display: flex;
+  display: ${(props) => (props.isMobile ? `unset` : `flex`)};
   flex-direction: row;
   width: 100%;
   height: 100%;
@@ -30,7 +30,7 @@ const Content = styled.div`
 
 const Cover = styled.div`
   width: 100vw;
-  height: 80%;
+  height: 90%;
   background-image: url(${(props) => props.url});
   background-position: center center;
   background-size: cover;
@@ -56,11 +56,10 @@ const Data = styled.div`
 `;
 // span은 margin을 가지지 않음
 const Title = styled.h3`
-  margin-left: 20px;
   font-size: 32px;
   font-weight: bold;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin: 20px;
   font-family: "Glory-Bold";
 `;
 
@@ -147,15 +146,16 @@ const DetailPresenter = ({
       </Helmet>
       <Container>
         <Backdrop url={`${BASE_URL}${result?.backdrop_path}`} />
-        <Content>
+        <Content isMobile={isMobile}>
           <Cover
+            isMobile={isMobile}
             url={
               result.poster_path
                 ? `${BASE_URL}${result.poster_path}`
                 : `${NoImage}`
             }
           />
-          <Data>
+          <Data isMobile={isMobile}>
             <Title>
               {result.original_title
                 ? result.original_title
