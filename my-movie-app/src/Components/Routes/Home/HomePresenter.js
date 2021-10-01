@@ -60,24 +60,6 @@ const HomePresenter = ({
       <Loader />
     ) : (
       <Container>
-        {popular && popular.length > 0 && (
-          <HomeSlider>
-            {popular.map((movie) => (
-              <Cover
-                key={movie.id}
-                backdropPath={
-                  movie.backdrop_path
-                    ? `${BASE_URL}${movie.backdrop_path}`
-                    : `${NoImage}`
-                }
-              >
-                <Contents>
-                  <Title>{movie.original_title}</Title>
-                </Contents>
-              </Cover>
-            ))}
-          </HomeSlider>
-        )}
         {nowPlaying.length > 0 && nowPlaying && (
           <Section title="NOW PLAYING!">
             {nowPlaying.map((movie) => (
