@@ -59,7 +59,7 @@ const Title = styled.span`
   margin-bottom: 3px;
 `;
 const Year = styled.span`
-  font-size: 10px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
 `;
 const HomeSliderItem = ({ id, imageURl, title, rating, year, overview }) => (
@@ -76,7 +76,7 @@ const HomeSliderItem = ({ id, imageURl, title, rating, year, overview }) => (
         <MovieInfoWrapper>
           <Title>{title}</Title>
           <OverView>
-            {overview.length > 200 ? overview.substring(200) + "..." : overview}
+            {overview.length > 300 ? overview.substring(300) + "..." : overview}
           </OverView>
           <Year>{year}</Year>
           <Rating>

@@ -7,7 +7,7 @@ import Message from "Components/Message";
 import Poster from "Components/Poster";
 import { Helmet } from "react-helmet";
 import HomeSlider from "Components/HomeSlider";
-import NoImage from "assets/defaultImage.png";
+import HomeSliderItem from "Components/HomeSLiderItem";
 
 const Container = styled.div`
   padding: 20px;
@@ -60,6 +60,23 @@ const HomePresenter = ({
       <Loader />
     ) : (
       <Container>
+        {popular.length > 0 && popular && (
+          <HomeSlider>
+            {popular.map((movie) => (
+              <HomeSliderItem
+                key={movie.id}
+                id={movie.id}
+                rating={movie.vote_average}
+                overview={movie.overview}
+                title={movie.original_title}
+                imageURl={movie.backdrop_path}
+                year={movie.release_date && movie.release_date.substring(0, 4)}
+                isMovie={true}
+              />
+            ))}
+          </HomeSlider>
+        )}
+
         {nowPlaying.length > 0 && nowPlaying && (
           <Section title="NOW PLAYING!">
             {nowPlaying.map((movie) => (
@@ -75,7 +92,7 @@ const HomePresenter = ({
             ))}
           </Section>
         )}
-        {upcoming.length > 0 && nowPlaying && (
+        {upcoming.length > 0 && upcoming && (
           <Section title="UPCOMING MOVIES!">
             {upcoming.map((movie) => (
               <Poster
@@ -90,21 +107,7 @@ const HomePresenter = ({
             ))}
           </Section>
         )}
-        {popular.length > 0 && nowPlaying && (
-          <Section title="POPULAR MOVIES!">
-            {popular.map((movie) => (
-              <Poster
-                key={movie.id}
-                id={movie.id}
-                rating={movie.vote_average}
-                title={movie.original_title}
-                imageURl={movie.poster_path}
-                year={movie.release_date && movie.release_date.substring(0, 4)}
-                isMovie={true}
-              />
-            ))}
-          </Section>
-        )}
+
         {error && <Message text={error} color="#e74c3c" />}
       </Container>
     )}
