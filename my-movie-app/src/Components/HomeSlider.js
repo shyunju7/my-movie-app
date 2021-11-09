@@ -2,11 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
+const Container = styled.div``;
 const settings = {
   dots: true,
   infinite: true,
