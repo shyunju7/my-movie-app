@@ -50,6 +50,7 @@ const Container = styled.div`
   opacity: 0.8;
   width: 100%;
   height: 40%;
+  margin-bottom: 52px;
 `;
 
 const SimpleSlider = ({ children }) => (
