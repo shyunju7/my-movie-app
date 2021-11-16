@@ -8,6 +8,7 @@ import Poster from "Components/Poster";
 
 const Container = styled.div`
   padding: 8px 20px;
+  height: calc(100vh - 12vh);
 `;
 
 const Form = styled.form`
