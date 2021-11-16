@@ -5,7 +5,6 @@ import Loader from "Components/Loader";
 import Message from "Components/Message";
 import NoImage from "assets/defaultImage.png";
 import { Helmet } from "react-helmet";
-import ReactPlayer from "react-player";
 import ActorProfile from "Components/ActorProfile";
 import SimilarContents from "Components/SimilarContents";
 import SimpleSlider from "Components/SimpleSlider";
@@ -13,7 +12,6 @@ import { Link } from "react-router-dom";
 import KeywordComponent from "Components/KeywordComponent";
 
 const Container = styled.div`
-  height: calc(100vh - 50px);
   width: 100%;
   position: relative;
   transition: opacity 1s linear;
@@ -30,7 +28,6 @@ const Content = styled.div`
 
 const Cover = styled.div`
   width: 100vw;
-  height: 90%;
   background-image: url(${(props) => props.url});
   background-position: center center;
   background-size: cover;
