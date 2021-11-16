@@ -1,14 +1,22 @@
-Learning React and ES6 by building a Movie Discovery App.
+# Songflix
+Learning React and ES6 by building a Movie Discovery App. <br />
+[NomadCoders-Nomflix](https://nomadcoders.co/react-masterclass)
 
-## Screens
+Use 
+[The Movie DB API](https://developers.themoviedb.org/3)
+
+<img src="https://user-images.githubusercontent.com/38373150/141957553-e8e5fbf7-06d9-47ee-bfa9-4529b2e24ac6.gif" />
+
+### Screens
 
 - [x] Home
 - [x] TV Shows
 - [x] Search
 - [x] Detail
+- [x] Review
 
 
-## API Verbs
+### API Verbs
 - [x] Now playing
 - [x] Upcoming(Movie)
 - [x] Top Rated(TV)
