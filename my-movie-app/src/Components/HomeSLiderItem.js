@@ -28,10 +28,10 @@ const MovieInfoWrapper = styled.div`
   position: absolute;
   bottom: 0px;
   width: 100%;
-  height: 25%;
+  height: 30%;
   padding: 10px;
   background-color: black;
-  opacity: 0.6;
+  opacity: 0.8;
 `;
 
 const Rating = styled.span`
@@ -42,8 +42,8 @@ const Rating = styled.span`
 
 const OverView = styled.div`
   opacity: 0.8;
-  font-size: 16px;
-  margin-top: 12px;
+  font-size: 18px;
+  margin-top: 16px;
 `;
 const ImageContainer = styled.div`
   position: relative;
@@ -58,9 +58,11 @@ const Title = styled.span`
   font-size: 40px;
   margin-bottom: 3px;
 `;
-const Year = styled.span`
-  font-size: 12px;
+const Year = styled.div`
+  position: absolute;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.5);
+  bottom: 10px;
 `;
 const HomeSliderItem = ({ id, imageURl, title, rating, year, overview }) => (
   <Link to={`/movie/${id}`}>
@@ -78,7 +80,7 @@ const HomeSliderItem = ({ id, imageURl, title, rating, year, overview }) => (
           <OverView>
             {overview.length > 300 ? overview.substring(300) + "..." : overview}
           </OverView>
-          <Year>{year}</Year>
+          <Year>Release Date {year}</Year>
           <Rating>
             <span role="img" aria-label="Rating">
               ⭐️

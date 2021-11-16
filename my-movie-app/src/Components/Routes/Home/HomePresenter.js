@@ -70,7 +70,7 @@ const HomePresenter = ({
                 overview={movie.overview}
                 title={movie.original_title}
                 imageURl={movie.backdrop_path}
-                year={movie.release_date && movie.release_date.substring(0, 4)}
+                year={movie.release_date}
                 isMovie={true}
               />
             ))}
